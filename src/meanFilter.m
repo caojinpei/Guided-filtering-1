@@ -58,7 +58,6 @@ function dest = meanFilter( img, r )
 % % img: 800x1200, r: 16, time: 3.5s
 
 % ============ version 3 =============
-tic;
 [height, width] = size(img);
 
 dest = zeros(height, width);
@@ -89,7 +88,6 @@ for i = r+1:r+height;
         dest(i-r, j-r) = (c(i+r,j+r)-x1-x2+xx) / R;
     end
 end
-toc;
 % img: 800x1200, r: 16, time: 0.08s
 
 end

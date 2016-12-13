@@ -5,12 +5,12 @@ p = double(p) / 255;
 I = double(I) / 255;
 
 meanI = meanFilter(I, r);
-meanII = meanFilter(I .* I, r);
-varI = meanII - meanI .* meanI;
-
 meanP = meanFilter(p, r);
-meanIP = meanFilter(I .* p, r);
-covIP = meanIP - meanI .* meanP;
+corrI = meanFilter(I .* I, r);
+corrIP = meanFilter(I .* p, r);
+
+varI = corrI - meanI .* meanI;
+covIP = corrIP - meanI .* meanP;
 a = covIP ./ (varI + epss);
 b = meanP - a .* meanI;
 
